@@ -17,7 +17,7 @@ import { InputControl, InputPrefix, InputRoot } from '../ui/Form/Input'
 
 export function Sidebar() {
   return (
-    <aside className="flex flex-col gap-6 overflow-auto overflow-x-hidden border-r border-zinc-200 px-5 py-8">
+    <aside className="flex flex-col gap-6 overflow-x-hidden border-r border-zinc-200 px-5 py-8">
       <Logo />
 
       <InputRoot>

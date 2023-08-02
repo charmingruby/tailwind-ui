@@ -1,6 +1,8 @@
-import { Mail } from 'lucide-react'
+import { Bold, Italic, Link, List, ListOrdered, Mail } from 'lucide-react'
 import { InputRoot, InputControl, InputPrefix } from '../ui/Form/Input'
 import * as FileInput from '@/components/ui/Form/FileInput'
+import { Select } from '../ui/Form/Select'
+import { SelectItem } from '../ui/Form/Select/SelectItem'
 
 export function SettingsForm() {
   return (
@@ -76,7 +78,10 @@ export function SettingsForm() {
         <label htmlFor="country" className="text-sm font-medium text-zinc-700">
           Country
         </label>
-        <div></div>
+        <Select placeholder="Select a country...">
+          <SelectItem value="br" text="Brazil" />
+          <SelectItem value="us" text="United States" />
+        </Select>
       </div>
 
       {/* Timezone */}
@@ -84,7 +89,10 @@ export function SettingsForm() {
         <label htmlFor="timezone" className="text-sm font-medium text-zinc-700">
           Timezone
         </label>
-        <div></div>
+        <Select placeholder="Select a timezone...">
+          <SelectItem value="utc8" text="Pacific Standard Time (UTC-08:00)" />
+          <SelectItem value="utc3" text="America SP (UTC-03:00)" />
+        </Select>
       </div>
 
       {/* Bio */}
@@ -95,7 +103,56 @@ export function SettingsForm() {
             Write a short introduction.
           </span>
         </label>
-        <div></div>
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <Select placeholder="Select a timezone..." defaultValue="normal">
+              <SelectItem defaultChecked value="normal" text="Normal text" />
+              <SelectItem value="md" text="Markdown" />
+            </Select>
+
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                className="rounded-md p-2 transition-colors hover:bg-zinc-50"
+              >
+                <Bold className="h-4 w-4  text-zinc-500" strokeWidth={3} />
+              </button>
+              <button
+                type="button"
+                className="rounded-md p-2 transition-colors hover:bg-zinc-50"
+              >
+                <Italic className="h-4 w-4  text-zinc-500" strokeWidth={3} />
+              </button>
+              <button
+                type="button"
+                className="rounded-md p-2 transition-colors hover:bg-zinc-50"
+              >
+                <Link className="h-4 w-4  text-zinc-500" strokeWidth={3} />
+              </button>
+              <button
+                type="button"
+                className="rounded-md p-2 transition-colors hover:bg-zinc-50"
+              >
+                <List className="h-4 w-4  text-zinc-500" strokeWidth={3} />
+              </button>
+              <button
+                type="button"
+                className="rounded-md p-2 transition-colors hover:bg-zinc-50"
+              >
+                <ListOrdered
+                  className="h-4 w-4  text-zinc-500"
+                  strokeWidth={3}
+                />
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            id="bio"
+            className="min-h-[120px] w-full resize-y rounded-lg border border-zinc-300 px-3 py-2 shadow-sm"
+            defaultValue="I'm a Product Designer based in Melbourne, Australia. I specialise in UX/UI design, brand strategy, and Webflow development."
+          />
+        </div>
       </div>
 
       {/* Portfolio Projects */}
@@ -109,6 +166,7 @@ export function SettingsForm() {
 
         <FileInput.Root>
           <FileInput.Trigger />
+          <FileInput.FileList />
           <FileInput.Control multiple />
         </FileInput.Root>
       </div>
